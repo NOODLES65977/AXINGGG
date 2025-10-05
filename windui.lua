@@ -6296,17 +6296,20 @@ PaddingRight=UDim.new(0,4),
 local B=y and y.UIStroke.UIGradient or nil
 
 
-b.AddSignal(ab.RenderStepped,function(C)
-if p.UIElements.Main and x and x.Parent~=nil then
-if B then
-B.Rotation=(B.Rotation+3)%360
-end
-if A and A.Parent~=nil and A.UIGradient then
-A.UIGradient.Rotation=(A.UIGradient.Rotation+3)%360
-if UIStroke and UIStroke.UIGradient then
+
+local B = UIStroke and UIStroke.UIGradient or nil
+b.AddSignal(ab.RenderStepped, function(C)
+    if p.UIElements.Main and x and x.Parent ~= nil then
+        if B then
+            B.Rotation = (B.Rotation + 3) % 360
+        end
+        if A and A.Parent ~= nil and A.UIGradient then
+            A.UIGradient.Rotation = (A.UIGradient.Rotation + 3) % 360
+        end
+        if UIStroke and UIStroke.UIGradient then
             UIStroke.UIGradient.Rotation = (UIStroke.UIGradient.Rotation + 3) % 360
-end
-end
+        end
+    end
 end)
 
 b.AddSignal(y:GetPropertyChangedSignal"AbsoluteSize",function()
